@@ -61,18 +61,18 @@ first.
 const env = require('./node-sec-env/sec-env.js');
 
 function xxx() {
-	var home, shell, something;
-	return (env.moduleInitWait()
-			.then(function(ret) {
-				home = env.getSync('HOME');
-				shell = env.getSync('SHELL');
-				something =  env.getSync('SOMETHING');
-				console.log('got environments home:' , home, 'shell:', shell, 'something:', something);
-			})
-			.catch(function(e) {
-				console.log(e.message);
-				process.exit(1);
-			}));
+        var home, shell, something;
+        return (env.moduleInitWait()
+                        .then(function(ret) {
+                                home = env.getSync('HOME');
+                                shell = env.getSync('SHELL');
+                                something =  env.getSync('SOMETHING');
+                                console.log('got environments home:' , home, 'shell:', shell, 'something:', something);
+                        })
+                        .catch(function(e) {
+                                console.log(e.message);
+                                process.exit(1);
+                        }));
 }
 
 xxx();

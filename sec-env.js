@@ -47,7 +47,7 @@ function keys() {
 function getSync(name) {
 	var item = getFullSync(name);
 	return item ? item.value : undefined;
-};
+}
 
 function getFullSync(name) {
 	if (! envProcessed) {
@@ -122,7 +122,7 @@ function processEnv(name, value) {
 			})
 			.then(function() {
 				var m;
-				if (m = value.match(/^sec-env:([a-zA-Z][a-zA-Z0-9-]*[a-zA-Z0-9])\((.*)\)$/)) {
+				if ((m = value.match(/^sec-env:([a-zA-Z][a-zA-Z0-9-]*[a-zA-Z0-9])\((.*)\)$/))) {
 					type = m[1];
 					var data = m[2];
 					return (Promise.resolve()
@@ -157,7 +157,7 @@ function processEnv(name, value) {
 								case 'aws-ssm-secure-base64':
 									return (getAwsSsmSecureString(data, true)
 											.then(function(ret) {
-												return Buffer.from(ret, 'base64')
+												return Buffer.from(ret, 'base64');
 											})
 											.catch(function(e) {
 												throw e;
@@ -191,7 +191,6 @@ function processEnv(name, value) {
 				return (ret.type !== 'plain');
 			})
 			.catch(function(e) {
-				console.log(e);
 				throw e;
 			}));
 }
@@ -207,7 +206,7 @@ function moduleInitialize(moduleRegisterInitialization) {
 	moduleRegisterInitialization(p);
 }
 
-var moduleInitWait = ((require('module-async-init'))(moduleInitialize, false/*, /*true*/));
+var moduleInitWait = ((require('module-async-init'))(moduleInitialize, false/*, true*/));
 
 module.exports = {
 	moduleInitWait: moduleInitWait,
