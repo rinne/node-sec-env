@@ -64,6 +64,19 @@ function keysSync() {
 	return Array.from(envMap.keys());
 }
 
+function isSet(name) {
+	return (moduleInitWait()
+			.then(function() {
+				if (typeof(name) !== 'string') {
+					throw new Error('Environment variable name is not a string');
+				}
+				return envMap.has(name);
+			})
+			.catch(function(e) {
+				throw e;
+			}));
+}
+
 function initAwsSsm() {
 	if (! ssm) {
 		if (! AWS) {
@@ -213,6 +226,7 @@ module.exports = {
 	get: get,
 	getFull: getFull,
 	keys: keys,
+	isSet: isSet,
 	getSync: getSync,
 	getFullSync: getFullSync,
 	keysSync: keysSync

@@ -153,6 +153,13 @@ synchronously. Throws an error, if the sec-env module has not been
 initialized. This interface can be used safely only after the code one
 way or another has waited env.moduleInitWait() to resolve.
 
+env.isSet(name)
+---------------
+
+Return a promise resolving to true or false depending on whether the
+variable name is defined or not. This is an asynchronous interface and
+is safe to call even when the module initialization still in progress.
+
 
 Value Formats
 =============
