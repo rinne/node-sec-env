@@ -1,10 +1,10 @@
 {
 	"name": "sec-env",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Asynchronous environment processing and lookup",
 	"main": "sec-env.js",
 	"dependencies": {
-		"module-async-init": "^0.2.0"
+		"module-async-init": "^0.2.1"
 	},
 	"scripts": {
 		"test": "node ./test/sec-env-test.js"
